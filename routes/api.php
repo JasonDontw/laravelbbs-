@@ -13,14 +13,19 @@ $api->version('v1', function($api) {  //定義第一版本
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api'    //我們增加了一個參數namespace，使v1版本的路由都會指向App\Http\Controllers\Api，方便我們書寫路由。
-], function($api) {     
+], function($api) {
+    $api->group([  //限制API調用次數
+        'middleware' => 'api.throttle',
+        'limit' => config('api.rate_limits.sign.limit'),  //數值寫於config/api裡面
+        'expires' => config('api.rate_limits.sign.expires'),
+        ] , function($api) {
     // 短信验证码
     $api->post('verificationCodes', 'VerificationCodesController@store')
         ->name('api.verificationCodes.store');
-        
+
     $api->post('users', 'UsersController@store')
         ->name('api.users.store');
 
 
-
+        });
 });
