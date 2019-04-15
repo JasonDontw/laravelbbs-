@@ -20,7 +20,7 @@ $api->version('v1', [
         'expires' => config('api.rate_limits.sign.expires'),
         ] , function($api) {
     // 短信验证码
-    $api->post('verificationCodes', 'VerificationCodesController@store')
+    $api->post('verificationCodes', 'VerificationCodesController@store') //若沒設定NAMESPACE的話這裡要App\Http\Controllers\Api\VerificationCodesController@store
         ->name('api.verificationCodes.store');
     // 用户注册
     $api->post('users', 'UsersController@store')
