@@ -13,7 +13,7 @@ $api->version('v1', function($api) {  //定義第一版本
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',    //我們增加了一個參數namespace，使v1版本的路由都會指向App\Http\Controllers\Api，方便我們書寫路由。
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array','bindings']
 ], function($api) {
     $api->group([  //限制API調用次數
         'middleware' => 'api.throttle',
@@ -63,6 +63,8 @@ $api->version('v1', [
         // 发布话题
         $api->post('topics', 'TopicsController@store')
         ->name('api.topics.store');
+        $api->patch('topics/{topic}', 'TopicsController@update')
+        ->name('api.topics.update');
         });
     });   
         // 游客可以访问的接口
