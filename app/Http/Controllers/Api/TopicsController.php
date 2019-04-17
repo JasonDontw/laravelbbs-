@@ -30,7 +30,7 @@ class TopicsController extends Controller
 
     public function destroy(Topic $topic)
     {
-    $this->authorize('destroy', $topic);
+    $this->authorize('destroy', $topic);  
 
     $topic->delete();
     return $this->response->noContent();
@@ -69,8 +69,10 @@ class TopicsController extends Controller
     }
 
     public function show(Topic $topic)
-{
+    {
     return $this->response->item($topic, new TopicTransformer());
-}
+    }
+
+
 
 }
