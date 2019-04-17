@@ -43,4 +43,6 @@ class UsersController extends Controller
         return redirect()->route('users.show', $user->id)->with('success', '個人資料更新成功！');
 
     }
+
+    
 }

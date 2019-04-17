@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\UserRequest;
 use App\Models\Image;
+use App\Transformers\UserTransformer;
 
 class UsersController extends Controller
 {
@@ -60,4 +61,9 @@ class UsersController extends Controller
     {
         return $this->response->item($this->user(), new UserTransformer()); //$this->user()等同於\Auth::guard('api')->user()。我們返回的是一個單一資源，
     }                                                                       //所以使用$this->response->item，第一個參數是模型實例，第二個參數是剛剛創建的transformer。
+
+    public function activedIndex(User $user)
+    {
+    return $this->response->collection($user->getActiveUsers(), new UserTransformer());
+    }
 }
