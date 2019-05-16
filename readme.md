@@ -19,7 +19,7 @@ The following description will be made assuming user has already installed homes
 
 **1. Clone the source code**
 ```
-> git clone git@github.com:yan8909/larabbs.git
+> https://github.com/JasonDontw/laravelbbs_v2.git
 ```
 
 **2. Set up Homestead**
@@ -96,14 +96,6 @@ You may find that in certain environments Webpack isn't updating when your files
 npm run watch-poll
 ```
 
-## Links
-- Homepage : http://larabbs.test/
-- Admin : http://larabbs.test/admin
-admin account and password:
-```
-username: admin@test.com
-password: password
-```
 
 ## Used package
 - [Intervention/image](https://github.com/Intervention/image)
